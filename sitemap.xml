@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://trivisiainteriors.com/</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://trivisiainteriors.com/assets/og-image.jpg</image:loc></image:image>
+    <image:image><image:loc>https://trivisiainteriors.com/assets/projects/p-living-chandelier.jpg</image:loc></image:image>
+    <image:image><image:loc>https://trivisiainteriors.com/assets/projects/office-open-workspace.jpg</image:loc></image:image>
+    <image:image><image:loc>https://trivisiainteriors.com/assets/projects/p-dining.jpg</image:loc></image:image>
+    <image:image><image:loc>https://trivisiainteriors.com/assets/projects/p-pooja-unit.jpg</image:loc></image:image>
+    <image:image><image:loc>https://trivisiainteriors.com/assets/projects/p-tv-wall.jpg</image:loc></image:image>
+    <image:image><image:loc>https://trivisiainteriors.com/assets/projects/p-modular-kitchen.jpg</image:loc></image:image>
+    <image:image><image:loc>https://trivisiainteriors.com/assets/projects/p-reception.jpg</image:loc></image:image>
+    <image:image><image:loc>https://trivisiainteriors.com/assets/projects/office-meeting-room.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://trivisiainteriors.com/privacy.html</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>
