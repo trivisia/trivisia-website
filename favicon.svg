@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2c08a"/><stop offset="1" stop-color="#9a7340"/></linearGradient></defs>
-  <rect width="48" height="48" rx="12" fill="#16171b"/>
-  <path d="M24 9L38 35H10z" stroke="url(#g)" stroke-width="2.2" stroke-linejoin="round"/>
-  <path d="M24 18l7 13H17z" fill="url(#g)"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="512" height="512"><title>Trivisia Interiors</title><defs><linearGradient id="fi-l" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="0"><stop offset="0" stop-color="#F0D9AE"/><stop offset="1" stop-color="#C49A5A"/></linearGradient><linearGradient id="fi-d" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="100" y2="0"><stop offset="0" stop-color="#B0874A"/><stop offset="1" stop-color="#7D5C30"/></linearGradient></defs><rect width="100" height="100" rx="22" fill="#16171B"/><g transform="translate(14 14) scale(0.72)"><path d="M10 13L50 21L50 35L10 27Z" fill="url(#fi-l)"/><path d="M50 21L90 13L90 27L50 35Z" fill="url(#fi-d)"/><path d="M42 33.4L50 35L50 87Z" fill="url(#fi-l)"/><path d="M50 35L58 33.4L50 87Z" fill="url(#fi-d)"/></g></svg>
