@@ -5,8 +5,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Security: only this site's own scripts may run; fonts/images only from the listed hosts.
      If you add a form backend (LEAD_ENDPOINT in site.js), add its host to connect-src. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; media-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-GJBpNBGkb2qalgoSb35gwl37tNIZkzOw9z6tQsOHcVk=' https://cdn.jsdelivr.net/gh/trivisia/trivisia-website@main/site.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://cdn.jsdelivr.net/gh/trivisia/trivisia-website@main/; media-src 'self' https://cdn.jsdelivr.net/gh/trivisia/trivisia-website@main/; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script id="media-heal">
+/* Self-healing loader. Some mobile networks in India intermittently fail to download files from
+   GitHub Pages. Any photo or video that fails is retried once, then loaded from the identical copy
+   on the jsDelivr CDN (a mirror of the site's GitHub repository). site.js gets the same treatment,
+   and if it cannot load at all, reveal animations are switched off so no content stays hidden.
+   After editing this script run D:\claud\trivisia-tools\csp_hash.py (the CSP allows it by hash). */
+(function () {
+  var MIRROR = 'https://cdn.jsdelivr.net/gh/trivisia/trivisia-website@main';
+  var root = document.documentElement;
+  root.classList.add('js');
+  function mirrorOf(src) {
+    var u = new URL(src, location.href);
+    return u.origin === location.origin ? MIRROR + u.pathname + u.hash : null;
+  }
+  function heal(el) {
+    var src = el.currentSrc || el.src, step = +(el.getAttribute('data-heal') || 0);
+    if (!src || step > 1) return;
+    el.setAttribute('data-heal', step + 1);
+    if (step === 0) {
+      var u = new URL(src); u.searchParams.set('retry', Date.now());
+      setTimeout(function () { el.src = u.href; }, 600);
+    } else {
+      var m = mirrorOf(src);
+      if (m) el.src = m;
+    }
+  }
+  addEventListener('error', function (e) {
+    var t = e.target;
+    if (t && (t.tagName === 'IMG' || t.tagName === 'VIDEO')) heal(t);
+  }, true);
+  function loadSite(src, last) {
+    var s = document.createElement('script');
+    s.src = src;
+    s.onerror = function () { last ? root.classList.remove('js') : loadSite(MIRROR + '/site.js', true); };
+    document.body.appendChild(s);
+  }
+  document.addEventListener('DOMContentLoaded', function () { loadSite('site.js', false); });
+})();
+</script>
 <title>Interior Designers in Maharashtra | Trivisia Interiors</title>
 <meta name="description" content="Interior designers for homes, offices &amp; modular kitchens across Maharashtra: Mumbai, Pune, Nashik, Nagpur. 3D design, turnkey execution. Free consultation.">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
@@ -463,8 +502,8 @@ footer .about-f{margin-top:20px;max-width:320px}
 .mbar{display:none}
 
 /* Reveal */
-.rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
-.rv.in{opacity:1;transform:none}
+.js .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
 .rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
 
 /* Responsive */
@@ -1156,6 +1195,6 @@ footer .about-f{margin-top:20px;max-width:320px}
   <a href="#contact" class="btn btn-gold">Free Consultation</a>
 </div>
 
-<script src="site.js"></script>
+
 </body>
 </html>
